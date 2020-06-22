@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: AWS CloudFormation sample template CF_Template_AmazonMQBroker.yaml. It creates a single-instance Amazon MQ Broker of type mq.t2.micro. 
+  To make set up easy for the evaluation of Amazon MQ, you can provision broker 
+  in a public subnet and makes it publicly accessible. However, make sure you only provide IP address of the system (Laptop or EC2 instance) for the parameter
+  IPRangetoAccessBroker. Essentially, the broker will allow inbound connections only from few IP addresses.
+  For production deployments, check the following resources 
+  1. [Using Amazon MQ Securely](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/using-amazon-mq-securely.html).
+  2. [Accessing the ActiveMQ Web Console of a Broker without Public Accessibility](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/accessing-web-console-of-broker-without-private-accessibility.html).
+
+Parameters:
+  Username:
+    Description: Amazon MQ Broker Username
+    Type: String
+    Default: AmazonMQPoC
+
+  Password:
+    Description: Amazon MQ Broker Password. If you are using a custom password, make a note of it. You will need it to access the broker.
+    Type: String
+    Default: AmazonMQPoC1234$
+
+  VPCId:
+    Description: Select a VPC. For a simple broker deployment, select a VPC that has a public subnet.
+    Type: AWS::EC2::VPC::Id
+    
+  SubnetId:
+    Description: Select a Subnet Id that belongs to the VPC selected above. For a simple broker deployment, select a public subnet.
+    Type: List<AWS::EC2::Subnet::Id>
+
+  IPRangetoAccessBroker:
+    Description: The IP address range that can be used to access Broker. Format for one IP address is x.x.x.x/32. Once the broker is provisioned, you can add more IP addresses to the security group.
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: (\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+    
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Parameters to provision Amazon MQ
+        Parameters:
+          - Username
+          - Password
+          - VPCId
+          - SubnetId
+          - IPRangetoAccessBroker
+
+Resources: 
+  StandaloneAmazonMQSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow access from a user specified CIDR block.
+      SecurityGroupEgress: []
+      SecurityGroupIngress:
+        - CidrIp: !Ref IPRangetoAccessBroker
+          FromPort: 61617
+          IpProtocol: tcp
+          ToPort: 61617
+        - CidrIp: !Ref IPRangetoAccessBroker
+          FromPort: 8162
+          IpProtocol: tcp
+          ToPort: 8162
+      VpcId: !Ref VPCId
+  BasicBroker:
+    Type: "AWS::AmazonMQ::Broker"
+    Properties: 
+      AutoMinorVersionUpgrade: "false"
+      BrokerName: MyBasicBroker
+      DeploymentMode: SINGLE_INSTANCE
+      SubnetIds: !Ref SubnetId
+      SecurityGroups: 
+        - !Ref StandaloneAmazonMQSecurityGroup
+      EngineType: ActiveMQ
+      EngineVersion: "5.15.8"
+      HostInstanceType: mq.t2.micro
+      PubliclyAccessible: "true"
+      Users: 
+        - 
+          ConsoleAccess: "true"
+          Groups: 
+            - MyGroup
+          Username: !Ref Username
+          Password: !Ref Password
+      Tags:
+        - Key: name
+          Value: Amazon MQ broker for evaluation
+Outputs:
+  BasicBroker:
+    Value: !Ref BasicBroker
+    Description: Amazon MQ Broker
+    Export:
+      Name: AmazonMQBroker

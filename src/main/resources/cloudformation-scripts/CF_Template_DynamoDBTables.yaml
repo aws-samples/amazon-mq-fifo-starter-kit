@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >-
+  CloudFormation template to create DynamoDB tables for AmazonMQ PoC.
+
+Parameters:
+
+  Table1:
+    Description: Table to track Put Message metrics
+    Type: String
+    Default: amazonmq_poc_putmsg_metrics
+  
+  Table2:
+    Description: Table to track Get Message metrics
+    Type: String
+    Default: amazonmq_poc_getmsg_metrics
+
+Resources:
+  PutMsgTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref 'Table1'
+      AttributeDefinitions:
+      - AttributeName: msg_id
+        AttributeType: N
+      - AttributeName: testcase_id
+        AttributeType: S
+      KeySchema:
+      - AttributeName: msg_id
+        KeyType: HASH   
+      - AttributeName: testcase_id
+        KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 10
+        WriteCapacityUnits: 20  
+
+  GetMsgTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref 'Table2'
+      AttributeDefinitions:
+      - AttributeName: msg_id
+        AttributeType: N
+      - AttributeName: testcase_id
+        AttributeType: S
+      KeySchema:
+      - AttributeName: msg_id
+        KeyType: HASH
+      - AttributeName: testcase_id
+        KeyType: RANGE  
+      ProvisionedThroughput:
+        ReadCapacityUnits: 10
+        WriteCapacityUnits: 20
+   
+Outputs:
+  PutTable:
+    Value: !Ref PutMsgTable
+    Description: Table to track Put Message metrics
+    Export:
+      Name: PutMsgMetrics
+  
+  GetTable:
+    Value: !Ref GetMsgTable
+    Description: Table to track Get Message metrics
+    Export:
+      Name: GetMsgMetrics
