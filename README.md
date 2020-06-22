@@ -7,7 +7,7 @@ This is a companion source code for ```AWS Blog - replace this with the actual l
 | Template                         | Purpose|
 |----------------------------------| -------------- |
 | [CF_Template_AmazonMQBroker.yaml](./src/main/resources/cloudformation-scripts/CF_Template_AmazonMQBroker.yaml) |Sample template to provision Amazon MQ broker |
-| [broker-config-sample.xml](./src/main/resources/broker-config-sample.xml) |Sample Broker Configuration File |
+| [custom-broker-configuration.xml](./src/main/resources/custom-broker-configuration.xml) |Sample Broker Configuration File |
 
 ## Setup Instructions
 
