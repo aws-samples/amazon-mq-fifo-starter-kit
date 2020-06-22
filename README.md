@@ -17,7 +17,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. This will generate a jar file with name **amazon-mq-fifo-starter-kit-1.0.jar**
 1. Provision Amazon MQ Broker using [CF_Template_AmazonMQBroker.yaml](./src/main/resources/cloudformation-scripts/CF_Template_AmazonMQBroker.yaml)
 
-   **Note:** To make the set up easy for PoC, you can provision the broker in a public subnet with a security group that has inbound access from your Laptop / EC2 instance.
+   **Note:** To make the set up easy, you can provision the broker in a public subnet with a security group that has inbound access from your Laptop / EC2 instance.
  For production deployments, check the following resources:
 
    - [Using Amazon MQ Securely](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/using-amazon-mq-securely.html).
@@ -32,7 +32,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. Configure Security Group from Broker details section on AWS Console as shown in the below screenshot.
   ![Alt](./src/main/resources/AmazonMQ_InboundConnection_DetailedInstructions.png)
 
-## Running the PoC from IDE on your Laptop
+## Running the Starter Kit from IDE locally
 
 1. Find out the Public IP address of your system and follow **step # 8** of [Setup Instructions](#setup-instructions)
 1. Run the program **AmazonMQPoC_TestRunner** with the following program arguments separated by a space
@@ -41,7 +41,7 @@ This is a companion source code for AWS Blog <Link to the blog>
    1. Amazon MQ password
    1. Number of messages to be inserted per producer
 
-## Running the PoC from Command-line on your Laptop
+## Running the Starter Kit from Command-line on your Laptop
 
 1. Go to the folder **/Amazonmqpoc/target** and run the jar file. 
 
@@ -53,25 +53,25 @@ This is a companion source code for AWS Blog <Link to the blog>
    5000
    ```
 
-## Running the PoC from an EC2 Instance
+## Running the Starter Kit from an EC2 Instance
 
 1. Launch an EC2 instance with an IAM role that has read and write permission on DynamoDB.
-1. Take the Private IP address of your EC2 instance and follow **step # 8** of [Setup Instructions](#setup-instructions) 
+1. Take the Private IP address of your EC2 instance and follow **step # 8** of [Setup Instructions](#setup-instructions)
 1. Log on to EC2 instance and do the following:
 
     ```bash
     sudo yum -y install java-1.8.0-openjdk.x86_64
-    mkdir amazonmq-poc
-    cd amazonmq-poc/
+    mkdir amazon-mq-starter-kit
+    cd amazon-mq-starter-kit/
     ```
 
-1. Copy the Jar file **amazonmqpoc-1.0.jar** from your Laptop to EC2 instance using secure copy (SCP) or PuTTY:
+1. Copy the Jar file **amazon-mq-fifo-starter-kit-1.0.jar** from your Laptop to EC2 instance using secure copy (SCP) or PuTTY:
 
    1. An example SCP command is below:
 
        ```bash
-       scp -i my_ec2_keypair.pem amazonmqpoc-1.0.jar 
-       ec2-user@IP_Address_of_EC2:/home/ec2-user/amazonmq-poc
+       scp -i my_ec2_keypair.pem amazon-mq-fifo-starter-kit-1.0.jar 
+       ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit
        ```
 
    1. To use PuTTY, refer [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html).
@@ -79,7 +79,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. Run the Java Application
 
    ```bash
-   java -jar amazonmqpoc-1.0.jar \
+   java -jar amazon-mq-fifo-starter-kit-1.0.jar \
    Replace_this_with_OpenWire_Endpoint_URL \
    Replace_this_with_AmazonMQ_UserName \
    Replace_this_with_AmazonMQ_Password \
@@ -89,7 +89,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. The above step generates message metrics in CSV files. Use the following command to import them back to your Laptop for analysis.
 
     ```bash
-    scp -i /The_Path_To/my_ec2_keypair.pem ec2-user@IP_Address_of_EC2:/home/ec2-user/amazonmq-poc/*.csv .
+    scp -i /The_Path_To/my_ec2_keypair.pem ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit/*.csv .
     ```
 
 ## ActiveMQ Web Console
@@ -100,9 +100,9 @@ You can access ActiveMQ Web Console to analyze queues and message statistics. Th
 
 ### FIFO Test Case 1 to 5. Producers and Consumers operated at the same time. All consumers started at the same time
 
-| Test Case Details                                             | Java Class |
+| Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | -------------- |
-| The driver program to execute all test cases| [AmazonMQPoCRunner](./src/main/java/com/aws/amazonmq/blog/runner/AmazonMQPoCRunner.java) |
+| The driver program to execute all test cases| [AmazonMQFIFOStarterKit](./src/main/java/com/aws/amazonmq/blog/runner/AmazonMQFIFOStarterKit.java) |
 | Queue with 3 producers, 3 message groups, 1 consumer  | [FIFO_Testcase_1](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_1.java) |
 | Queue with 3 producers, 3 message groups, 2 consumers | [FIFO_Testcase_2](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_2.java) |
 | Queue with 3 producers, 3 message groups, 3 consumers | [FIFO_Testcase_3](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_3.java) |
@@ -111,19 +111,19 @@ You can access ActiveMQ Web Console to analyze queues and message statistics. Th
 
 ### FIFO Test Case 6 - Producers and Consumers operated at the same time. One of the three consumers started first
 
-| Test Case Details                                             | Java Class |
+| Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | --------------   |
 | Queue with 3 producers, 3 message groups, 3 consumers  | [FIFO_Testcase_6](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_6.java) |
 
-### FIFO Test Case 7 - Demonstrated message distribution improvement by closing message groups explicitly.
+### FIFO Test Case 7 - Demonstrated message distribution improvement by closing message groups explicitly
 
-| Test Case Details                                             | Java Class |
+| Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | --------------   |
 | Queue with 3 producers, 3 message groups, 3 consumers  | [FIFO_Testcase_7](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_7.java) |
 
 ### FIFO Test Case 8 - Demonstrated message distribution improvement by closing consumer session and restarting
 
-| Test Case Details                                             | Java Class |
+| Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | -------------- |
 | Queue with 3 producers, 3 message groups, 3 consumers | [FIFO_Testcase_8](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_8.java) |
 

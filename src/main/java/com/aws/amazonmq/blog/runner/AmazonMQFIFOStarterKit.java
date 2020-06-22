@@ -23,7 +23,7 @@ import com.aws.amazonmq.blog.testcases.FIFO_Testcase_7;
  * @author itharav
  *
  */
-public class AmazonMQPoCRunner {
+public class AmazonMQFIFOStarterKit {
 
 	public static void main(String[] args) {
 		// program arguments
