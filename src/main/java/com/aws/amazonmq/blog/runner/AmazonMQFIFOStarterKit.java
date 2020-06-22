@@ -20,7 +20,7 @@ import com.aws.amazonmq.blog.testcases.FIFO_Testcase_7;
  * The other arguments needed to run the program are hard coded in this file.
  * Modify them per your requirement.
  * 
- * @author itharav
+ * @author Ravi Itha
  *
  */
 public class AmazonMQFIFOStarterKit {

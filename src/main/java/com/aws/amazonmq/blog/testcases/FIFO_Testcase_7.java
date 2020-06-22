@@ -21,7 +21,8 @@ import com.aws.amazonmq.blog.util.MsgProducer_FIFO_Close_Message_Group;
 /**
  * This class demonstrates multi-producer and multi-consumer and FIFO scenarios of an Active MQ.
  * Consumers use a custom pre-fetch size of 1.
- * @author itharav
+ *
+ * @author Ravi Itha
  *
  */
 public class FIFO_Testcase_7 {
