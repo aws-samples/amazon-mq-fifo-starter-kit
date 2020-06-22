@@ -9,7 +9,6 @@ import com.aws.amazonmq.blog.testcases.FIFO_Testcase_3;
 import com.aws.amazonmq.blog.testcases.FIFO_Testcase_4;
 import com.aws.amazonmq.blog.testcases.FIFO_Testcase_5;
 import com.aws.amazonmq.blog.testcases.FIFO_Testcase_6;
-import com.aws.amazonmq.blog.testcases.FIFO_Testcase_8;
 import com.aws.amazonmq.blog.testcases.FIFO_Testcase_7;
 
 /**
@@ -39,8 +38,7 @@ public class AmazonMQFIFOStarterKit {
 		String queue_5 = "queue_5";
 		String queue_6 = "queue_6";
 		String queue_7 = "queue_7";
-		String queue_8 = "queue_8";
-
+		
 		String[] useCaseIds = new String[] { "FIFO_Testcase_1", "FIFO_Testcase_2", "FIFO_Testcase_3", "FIFO_Testcase_4",
 				"FIFO_Testcase_5", "FIFO_Testcase_6", "FIFO_Testcase_7", "FIFO_Testcase_8"};
 		String[] t1_args = new String[] { amazonMQSSLEndPoint, amazonMQUsername, amazonMQPassword, queue_1, numMsgs,
@@ -57,8 +55,7 @@ public class AmazonMQFIFOStarterKit {
 				useCaseIds[5], customPrefetch };
 		String[] t7_args = new String[] { amazonMQSSLEndPoint, amazonMQUsername, amazonMQPassword, queue_7, numMsgs,
 				useCaseIds[6], customPrefetch };
-		String[] t8_args = new String[] { amazonMQSSLEndPoint, amazonMQUsername, amazonMQPassword, queue_8, numMsgs,
-				useCaseIds[7], customPrefetch };
+		
 		try {
 			/**
 			 * FIFO Test Case 1,
@@ -162,10 +159,6 @@ public class AmazonMQFIFOStarterKit {
 			FIFO_Testcase_7.main(t7_args);
 			System.out.println("End: Test case - " + useCaseIds[6]);
 			
-			System.out.println("Start: Test case - " + useCaseIds[7]);
-			FIFO_Testcase_8.main(t8_args);
-			System.out.println("End: Test case - " + useCaseIds[7]);
-
 			Thread.sleep(180000 * 2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
