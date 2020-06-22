@@ -121,12 +121,6 @@ You can access ActiveMQ Web Console to analyze queues and message statistics. Th
 |-------------------------------------------------------------- | --------------   |
 | Queue with 3 producers, 3 message groups, 3 consumers  | [FIFO_Testcase_7](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_7.java) |
 
-### FIFO Test Case 8 - Demonstrated message distribution improvement by closing consumer session and restarting
-
-| Test Case Description                                             | Java Class |
-|-------------------------------------------------------------- | -------------- |
-| Queue with 3 producers, 3 message groups, 3 consumers | [FIFO_Testcase_8](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_8.java) |
-
 ## Tags
 
 Amazon MQ, Enterprise Messaging, Queues, FIFO, Message Ordering

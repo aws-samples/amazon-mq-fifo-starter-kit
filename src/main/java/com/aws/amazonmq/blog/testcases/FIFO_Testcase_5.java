@@ -19,8 +19,11 @@ import com.aws.amazonmq.blog.util.MsgConsumer_CustomPrefetch;
 import com.aws.amazonmq.blog.util.MsgProducer_FIFO;
 
 /**
- * This class demonstrates multi-producer and multi-consumer and FIFO scenarios
- * of an Active MQ. Consumers use a custom pre-fetch size of 1.
+ * This class demonstrates FIFO Test case # 5 where:
+ *  - a queue has four producers 
+ *  - a queue has three consumers
+ *  - a queue has four message groups
+ *  - each consumer uses a pre-fetch size of 1
  * 
  * @author Ravi Itha
  *
