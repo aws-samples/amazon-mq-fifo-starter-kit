@@ -74,7 +74,7 @@ This is a companion source code for ```AWS Blog - replace this with the actual l
        ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit
        ```
 
-   1. To use PuTTY, refer [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html).
+   1. To use PuTTY, refer [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
 1. Run the Java Application
 
