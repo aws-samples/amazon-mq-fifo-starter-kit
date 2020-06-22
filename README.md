@@ -1,6 +1,6 @@
 # Building efficient and scalable distributed applications using Amazon MQ
 
-This is a companion source code for AWS Blog <Link to the blog>
+This is a companion source code for ```AWS Blog - replace this with the actual link```
 
 ## CloudFormation Templates & Supporting Resources
 
@@ -20,8 +20,8 @@ This is a companion source code for AWS Blog <Link to the blog>
    **Note:** To make the set up easy, you can provision the broker in a public subnet with a security group that has inbound access from your Laptop / EC2 instance.
  For production deployments, check the following resources:
 
-   - [Using Amazon MQ Securely](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/using-amazon-mq-securely.html).
-   - [Accessing the ActiveMQ Web Console of a Broker without Public Accessibility](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/accessing-web-console-of-broker-without-private-accessibility.html).
+   - [Using Amazon MQ Securely](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/using-amazon-mq-securely.html)
+   - [Accessing the ActiveMQ Web Console of a Broker without Public Accessibility](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/accessing-web-console-of-broker-without-private-accessibility.html)
 
 1. Optionally, you can use AWS Management Console to provision broker by following this [AWS Blog](https://aws.amazon.com/blogs/aws/amazon-mq-managed-message-broker-service-for-activemq/)
 
@@ -32,10 +32,10 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. Configure Security Group from Broker details section on AWS Console as shown in the below screenshot.
   ![Alt](./src/main/resources/AmazonMQ_InboundConnection_DetailedInstructions.png)
 
-## Running the Starter Kit from IDE locally
+## Running the Starter Kit from a local IDE
 
 1. Find out the Public IP address of your system and follow **step # 8** of [Setup Instructions](#setup-instructions)
-1. Run the program **AmazonMQPoC_TestRunner** with the following program arguments separated by a space
+1. Run the program **AmazonMQFIFOStarterKit** with the following program arguments separated by a space
    1. Amazon MQ OpenWire Endpoint URL
    1. Amazon MQ username
    1. Amazon MQ password
@@ -43,7 +43,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 
 ## Running the Starter Kit from Command-line on your Laptop
 
-1. Go to the folder **/Amazonmqpoc/target** and run the jar file. 
+1. Go to the folder **/amazon-mq-fifo-starter-kit/target** and run the jar file.
 
    ```bash
    java -jar amazon-mq-fifo-starter-kit-1.0.jar \
@@ -70,7 +70,7 @@ This is a companion source code for AWS Blog <Link to the blog>
    1. An example SCP command is below:
 
        ```bash
-       scp -i my_ec2_keypair.pem amazon-mq-fifo-starter-kit-1.0.jar 
+       scp -i ec2_keypair.pem amazon-mq-fifo-starter-kit-1.0.jar 
        ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit
        ```
 
@@ -89,7 +89,7 @@ This is a companion source code for AWS Blog <Link to the blog>
 1. The above step generates message metrics in CSV files. Use the following command to import them back to your Laptop for analysis.
 
     ```bash
-    scp -i /The_Path_To/my_ec2_keypair.pem ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit/*.csv .
+    scp -i /The_Path_To/ec2_keypair.pem ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit/*.csv .
     ```
 
 ## ActiveMQ Web Console
