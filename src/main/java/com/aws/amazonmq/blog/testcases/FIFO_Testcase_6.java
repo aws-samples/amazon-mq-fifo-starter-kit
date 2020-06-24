@@ -56,7 +56,7 @@ public class FIFO_Testcase_6 {
 					.usingJobData("username", username)
 					.usingJobData("password", password)
 					.usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-1")
+					.usingJobData("msgGroup", "Group-A")
 					.usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 250000)
 					.usingJobData("msgPrefix", "A-").build();
@@ -67,7 +67,7 @@ public class FIFO_Testcase_6 {
 					.usingJobData("username", username)
 					.usingJobData("password", password)
 					.usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-2")
+					.usingJobData("msgGroup", "Group-B")
 					.usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 300000)
 					.usingJobData("msgPrefix", "B-").build();
@@ -78,7 +78,7 @@ public class FIFO_Testcase_6 {
 					.usingJobData("username", username)
 					.usingJobData("password", password)
 					.usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-3")
+					.usingJobData("msgGroup", "Group-C")
 					.usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 350000)
 					.usingJobData("msgPrefix", "C-").build();

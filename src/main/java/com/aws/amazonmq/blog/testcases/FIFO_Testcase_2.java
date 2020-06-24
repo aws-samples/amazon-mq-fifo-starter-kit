@@ -51,21 +51,21 @@ public class FIFO_Testcase_2 {
 					.usingJobData("producerName", "producer_1").usingJobData("queueName", queueName)
 					.usingJobData("amazonMQSSLEndPoint", amazonMQSSLEndPoint).usingJobData("username", username)
 					.usingJobData("password", password).usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-1").usingJobData("numMsgs", numMsgs)
+					.usingJobData("msgGroup", "Group-A").usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 250000).usingJobData("msgPrefix", "A-").build();
 			JobDetail job2 = newJob(MsgProducer_FIFO.class)
 					.withIdentity(useCaseId.concat("-").concat("producer-job2"), "group1")
 					.usingJobData("producerName", "producer_2").usingJobData("queueName", queueName)
 					.usingJobData("amazonMQSSLEndPoint", amazonMQSSLEndPoint).usingJobData("username", username)
 					.usingJobData("password", password).usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-2").usingJobData("numMsgs", numMsgs)
+					.usingJobData("msgGroup", "Group-B").usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 300000).usingJobData("msgPrefix", "B-").build();
 			JobDetail job3 = newJob(MsgProducer_FIFO.class)
 					.withIdentity(useCaseId.concat("-").concat("producer-job3"), "group1")
 					.usingJobData("producerName", "producer_3").usingJobData("queueName", queueName)
 					.usingJobData("amazonMQSSLEndPoint", amazonMQSSLEndPoint).usingJobData("username", username)
 					.usingJobData("password", password).usingJobData("useCaseId", useCaseId)
-					.usingJobData("msgGroup", "group-3").usingJobData("numMsgs", numMsgs)
+					.usingJobData("msgGroup", "Group-C").usingJobData("numMsgs", numMsgs)
 					.usingJobData("msgIdSequence", 350000).usingJobData("msgPrefix", "C-").build();
 			// define consumer jobs and tie them to MsgConsumer which does the actual work
 			JobDetail job4 = newJob(MsgConsumer_CustomPrefetch.class)

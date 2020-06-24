@@ -94,7 +94,7 @@ This is a companion source code for ```AWS Blog - replace this with the actual l
 
 ## Scenarios Demonstrated: Multiple producers and consumers with Message Groups
 
-### Scenario 1: All producers and consumers with same start time
+### Scenario 1: All consumers started at the same time   
 
 | Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | -------------- |
@@ -111,7 +111,7 @@ This is a companion source code for ```AWS Blog - replace this with the actual l
 |-------------------------------------------------------------- | --------------   |
 | Queue with 3 producers, 3 message groups, 3 consumers  | [FIFO_Testcase_6](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_6.java) |
 
-### Scenario 2b: All consumers not started at same time – mitigate by closing and reopening message group
+### Scenario 2b: All consumers not started at same time – mitigate consumer message distribution by closing message groups
 
 | Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | --------------   |
