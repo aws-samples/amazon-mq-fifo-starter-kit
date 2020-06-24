@@ -92,13 +92,9 @@ This is a companion source code for ```AWS Blog - replace this with the actual l
     scp -i /The_Path_To/ec2_keypair.pem ec2-user@IP_Address_of_EC2:/home/ec2-user/amazon-mq-starter-kit/*.csv .
     ```
 
-## ActiveMQ Web Console
+## Scenarios Demonstrated: Multiple producers and consumers with Message Groups
 
-You can access ActiveMQ Web Console to analyze queues and message statistics. The credentials for the Console are same as what you provided during broker setup.
-
-## Source code Summary
-
-### FIFO Test Case 1 to 5. Producers and Consumers operated at the same time. All consumers started at the same time
+### Scenario 1: All producers and consumers with same start time
 
 | Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | -------------- |
@@ -109,13 +105,13 @@ You can access ActiveMQ Web Console to analyze queues and message statistics. Th
 | Queue with 3 producers, 3 message groups, 4 consumers | [FIFO_Testcase_4](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_4.java) |
 | Queue with 4 producers, 4 message groups, 3 consumers | [FIFO_Testcase_5](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_5.java) |
 
-### FIFO Test Case 6 - Producers and Consumers operated at the same time. One of the three consumers started first
+### Scenario 2a: All consumers not started at same time
 
 | Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | --------------   |
 | Queue with 3 producers, 3 message groups, 3 consumers  | [FIFO_Testcase_6](./src/main/java/com/aws/amazonmq/blog/testcases/FIFO_Testcase_6.java) |
 
-### FIFO Test Case 7 - Demonstrated message distribution improvement by closing message groups explicitly
+### Scenario 2b: All consumers not started at same time – mitigate by closing and reopening message group
 
 | Test Case Description                                             | Java Class |
 |-------------------------------------------------------------- | --------------   |
