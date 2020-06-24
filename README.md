@@ -1,4 +1,4 @@
-# Building efficient and scalable distributed applications using Amazon MQ
+# FIFO Message Ordering with Amazon MQ, for ActiveMQ
 
 This is a companion source code for ```AWS Blog - replace this with the actual link```
 
