@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.amazonaws.samples</groupId>
-  <artifactId>amazon-mq-fifo-starter-kit</artifactId>
-  <version>1.0</version>
-  <name>Amazon MQ FIFO Starter Kit</name>
-  <description>For AWS Blog</description>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.amazonaws.samples</groupId>
+	<artifactId>amazon-mq-fifo-starter-kit</artifactId>
+	<version>1.0</version>
+	<name>Amazon MQ Starter Kit</name>
+	<description>Implementing FIFO message ordering with Amazon MQ for Apache ActiveMQ</description>
+	<dependencies>
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-client</artifactId>
@@ -52,12 +54,12 @@
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>1.7.25</version>
 		</dependency>
-		
-		  <dependency>
-     <groupId>com.opencsv</groupId>
-     <artifactId>opencsv</artifactId>
-     <version>4.5</version>
-  </dependency>
+
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>4.5</version>
+		</dependency>
 
 	</dependencies>
 

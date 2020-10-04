@@ -1,6 +1,6 @@
-# FIFO Message Ordering with Amazon MQ, for ActiveMQ
+# Amazon MQ Starter Kit
 
-This is a companion source code for ```AWS Blog - replace this with the actual link```
+Amazon MQ starter kit described in AWS blog [Implementing FIFO message ordering with Amazon MQ for Apache ActiveMQ](https://aws.amazon.com/blogs/compute/implementing-fifo-message-ordering-with-amazon-mq-for-apache-activemq/)
 
 ## CloudFormation Templates & Supporting Resources
 
