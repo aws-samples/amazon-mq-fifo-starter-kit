@@ -123,4 +123,4 @@ Amazon MQ, Enterprise Messaging, Queues, FIFO, Message Ordering
 
 ## License Summary
 
-This sample code is made available under the MIT license. See the LICENSE file.
+This sample code is made available under the MIT-0 license. See the LICENSE file.
